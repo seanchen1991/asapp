@@ -9,4 +9,10 @@ defmodule Asapp.User do
 
         timestamps
     end
+
+    def changeset(model, params \\ :empty) do
+        model
+        |> cast(params, ~w(name displayname), [])
+        |> validate_length(:displayname, min: 3, max: 20)
+    end
 end
