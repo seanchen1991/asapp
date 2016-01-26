@@ -36,8 +36,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :asapp, Asapp.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "seanchen",
+  password: "seanchen",
   database: "asapp_dev",
   hostname: "localhost",
   pool_size: 10
