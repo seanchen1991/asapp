@@ -21,10 +21,12 @@ defmodule Asapp.ConnCase do
       use Phoenix.ConnTest
 
       alias Asapp.Repo
-      import Ecto.Model
+      import Ecto
+      import Ecto.Changeset
       import Ecto.Query, only: [from: 2]
 
       import Asapp.Router.Helpers
+      import Asapp.TestHelpers
 
       # The default endpoint for testing
       @endpoint Asapp.Endpoint
