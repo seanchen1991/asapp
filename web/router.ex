@@ -22,6 +22,12 @@ defmodule Asapp.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
+  scope "/manage", Asapp do
+      pipe_through [:browser, :authenticate_user]
+
+      resources "/chatrooms", ChatroomController
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", Asapp do
   #   pipe_through :api
