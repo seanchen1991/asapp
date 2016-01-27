@@ -6,6 +6,7 @@ defmodule Asapp.User do
         field :displayname, :string
         field :password, :string, virtual: true
         field :password_hash, :string
+        has_many :chatrooms, Asapp.Chatroom
 
         timestamps
     end
