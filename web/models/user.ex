@@ -15,6 +15,7 @@ defmodule Asapp.User do
         model
         |> cast(params, ~w(name displayname), [])
         |> validate_length(:displayname, min: 3, max: 20)
+        |> unique_constraint(:displayname)
     end
 
     def registration_changeset(model, params) do

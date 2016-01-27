@@ -1,16 +1,16 @@
 defmodule Asapp.ChatroomController do
-  use Asapp.Web, :controller
+    use Asapp.Web, :controller
 
-  alias Asapp.Chatroom
+    alias Asapp.Chatroom
 
-  plug :scrub_params, "chatroom" when action in [:create, :update]
+    plug :scrub_params, "chatroom" when action in [:create, :update]
 
-  def action(conn, _) do
+    def action(conn, _) do
       apply(__MODULE__, action_name(conn),
             [conn, conn.params, conn.assigns.current_user])
-  end
+    end
 
-    def index(conn, _params) do
+    def index(conn, _params, _user) do
         chatrooms = Repo.all(Chatroom)
         render(conn, "index.html", chatrooms: chatrooms)
     end
@@ -40,7 +40,7 @@ defmodule Asapp.ChatroomController do
         end
     end
 
-    def show(conn, %{"id" => id}) do
+    def show(conn, %{"id" => id}, _user) do
         chatroom = Repo.get!(Chatroom, id)
         render(conn, "show.html", chatroom: chatroom)
     end
